@@ -69,7 +69,7 @@ rustPlatform.buildRustPackage.override { stdenv = clangStdenv; } rec {
     python3 # skia
     removeReferencesTo
     cctools
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ];
+  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ApplicationServices ];
 
   nativeCheckInputs = [ neovim ];
 
