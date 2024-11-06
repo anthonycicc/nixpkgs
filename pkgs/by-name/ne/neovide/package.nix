@@ -21,7 +21,7 @@
 , libglvnd
 , libxkbcommon
 , cctools
-, ApplicationServices ? stdenv.hostPlatform.isDarwin
+, ApplicationServices
 , enableWayland ? stdenv.hostPlatform.isLinux
 , wayland
 }:
