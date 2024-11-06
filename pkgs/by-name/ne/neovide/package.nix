@@ -21,6 +21,7 @@
 , libglvnd
 , libxkbcommon
 , cctools
+, ApplicationServices ? stdenv.hostPlatform.isDarwin
 , enableWayland ? stdenv.hostPlatform.isLinux
 , wayland
 }:
@@ -79,6 +80,7 @@ rustPlatform.buildRustPackage.override { stdenv = clangStdenv; } rec {
     cctools
   ] ++ lib.optionals stdenv.hostPlatform.isDarwin [
     darwin.apple_sdk.frameworks.AppKit
+    ApplicationServices
   ];
 
   postFixup = let
