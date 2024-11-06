@@ -20,6 +20,7 @@
 , darwin
 , libglvnd
 , libxkbcommon
+, libtool
 , enableWayland ? stdenv.hostPlatform.isLinux
 , wayland
 }:
@@ -66,6 +67,7 @@ rustPlatform.buildRustPackage.override { stdenv = clangStdenv; } rec {
     pkg-config
     python3 # skia
     removeReferencesTo
+    libtool
   ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ];
 
   nativeCheckInputs = [ neovim ];
@@ -74,6 +76,7 @@ rustPlatform.buildRustPackage.override { stdenv = clangStdenv; } rec {
     SDL2
     fontconfig
     rustPlatform.bindgenHook
+    libtool
   ] ++ lib.optionals stdenv.hostPlatform.isDarwin [
     darwin.apple_sdk.frameworks.AppKit
   ];
